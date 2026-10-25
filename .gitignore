@@ -1,0 +1,21 @@
+# Dependencies and generated output at any project depth
+node_modules/
+artifacts/
+cache/
+dist/
+bundle/
+types/
+coverage/
+.gas-snapshot
+snapshots/
+
+# Keep public Ignition deployment artifacts needed for reproducibility
+!code/ignition/deployments/**/artifacts/
+!code/ignition/deployments/**/artifacts/**
+
+# Local secrets
+.env
+.env.*
+!.env.example
+keystore*.json
+*.key
