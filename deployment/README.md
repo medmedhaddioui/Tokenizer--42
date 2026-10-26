@@ -28,6 +28,11 @@ npx hardhat test
 
 Run all remaining commands in this guide from `code/`.
 
+The runnable entry point is [deploy.sh](deploy.sh). From the repository root,
+use `bash deployment/deploy.sh` for a local deployment or
+`bash deployment/deploy.sh sepolia` for Sepolia. It locates the Hardhat project
+automatically and calls the module below. Bash is available in WSL/Linux/macOS.
+
 The deployment module is [Token42.ts](../code/ignition/modules/Token42.ts).
 It tells Hardhat Ignition to deploy `Token42` without constructor arguments.
 It lives inside the Hardhat project so it can resolve the project's dependencies.
@@ -35,7 +40,7 @@ It lives inside the Hardhat project so it can resolve the project's dependencies
 ## 2. Practice locally
 
 ```sh
-npx hardhat ignition deploy ignition/modules/Token42.ts --network hardhatMainnet
+bash ../deployment/deploy.sh hardhatMainnet
 ```
 
 Despite its name, `hardhatMainnet` is configured as a simulated network, not
@@ -90,7 +95,7 @@ To correct a saved value, repeat its `keystore set` command with `--force`.
 ## 5. Deploy to Sepolia
 
 ```sh
-npx hardhat ignition deploy ignition/modules/Token42.ts --network sepolia
+bash ../deployment/deploy.sh sepolia
 ```
 
 Unlock the keystore when prompted. Check that the confirmation names Sepolia
@@ -102,7 +107,10 @@ Ignition saves the public deployment records under
 `code/ignition/deployments/chain-11155111/`, including the deployed address,
 transaction journal, artifacts, and compiler input. Preserve these records:
 Ignition uses them to track and resume deployment. Repeating the command with
-the same records does not necessarily create another instance.
+the same records does not necessarily create another instance. These generated
+records are kept locally and excluded from Git. A fresh clone has no deployment
+history and can deploy a new instance; record its new address. For evaluation,
+practice a fresh local deployment with the script before any public deployment.
 
 ## 6. Verify the source on Etherscan
 

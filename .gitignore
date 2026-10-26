@@ -9,9 +9,8 @@ coverage/
 .gas-snapshot
 snapshots/
 
-# Keep public Ignition deployment artifacts needed for reproducibility
-!code/ignition/deployments/**/artifacts/
-!code/ignition/deployments/**/artifacts/**
+# Local Ignition deployment history
+/code/ignition/deployments/
 
 # Local secrets
 .env

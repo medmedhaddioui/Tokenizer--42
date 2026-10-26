@@ -53,7 +53,7 @@ approved spending, and rejection of spending without approval.
 ## Repository layout
 
 - `code/`: contracts, tests, and Hardhat project.
-- `deployment/`: verification input and deployment documentation.
+- `deployment/`: runnable deployment script, verification input, and deployment documentation.
 - `documentation/`: token usage and explanations.
 
 ## Documentation
@@ -61,3 +61,6 @@ approved spending, and rejection of spending without approval.
 - [Deployment and source verification](deployment/README.md)
 - [Token operation, security, and evaluation demonstration](documentation/README.md)
 - [Mandatory requirements and submission checklist](documentation/SUBMISSION.md)
+
+From the repository root, run `bash deployment/deploy.sh` for a temporary local
+deployment. See the deployment guide before using `bash deployment/deploy.sh sepolia`.

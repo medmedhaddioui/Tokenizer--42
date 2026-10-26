@@ -6,7 +6,7 @@
 | Blockchain-compatible token standard | ERC-20 inherited from OpenZeppelin on Ethereum Sepolia |
 | Root README explains choices | [README](../README.md) |
 | Readable, commented token source under code/ | [Token42.sol](../code/contracts/Token42.sol) |
-| Separate deployment materials | [deployment/](../deployment/README.md), including exact verification input and a link to the Ignition module |
+| Separate deployment materials | [deployment/](../deployment/README.md), including a runnable [deployment script](../deployment/deploy.sh), instructions, and verification input |
 | Public blockchain deployment, ticker, explorer publication | T42 at the Sepolia address linked in the root README; source verified |
 | Contract address and network in Git repository contents | Root README and deployment guide |
 | Root documentation/ explains operation and usage | [Usage and security guide](README.md) |
@@ -43,8 +43,8 @@ git diff --cached --check
 ```
 
 Review the staged files before committing. Include package-lock.json, the token
-source, tests, configuration, deployment module, public deployment records, and
-documentation. Exclude node_modules, generated working build/cache output,
+source, tests, configuration, deployment script/module, and
+documentation. Exclude local Ignition deployment records, node_modules, generated working build/cache output,
 private keys, passwords, and environment files containing secrets. The encrypted
 Hardhat keystore is outside this repository and must remain private.
 
