@@ -18,3 +18,10 @@ snapshots/
 !.env.example
 keystore*.json
 *.key
+
+# Local assistant configuration and unused npm publishing settings
+/.agents/
+/.claude
+/AGENTS.md
+/CLAUDE.md
+/.npmignore
