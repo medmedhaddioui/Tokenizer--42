@@ -125,14 +125,12 @@ From the repository root:
 
 ```sh
 cd code
-# If nvm is installed, select the version in .nvmrc:
-nvm use
 npm ci
 npm test
 npm run typecheck
 ```
 
-Without nvm, install/select Node.js 24 using your preferred method. Local tests
+Install/select Node.js 24 using your preferred method before running these commands. Local tests
 use simulated accounts and need neither wallet secrets nor Sepolia funds.
 Each Solidity test receives a fresh contract through `setUp()`.
 

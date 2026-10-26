@@ -43,7 +43,7 @@ npm ci
 npx hardhat test
 ```
 
-If you use nvm, run `nvm use` inside `code/` first. `npm test` also runs the
+`npm test` also runs the
 tests, and `npm run typecheck` builds the contracts and checks TypeScript.
 Local tests require no private key or testnet funds.
 
