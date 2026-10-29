@@ -12,7 +12,7 @@
 | Root documentation/ explains operation and usage | [Usage and security guide](README.md) |
 | Demonstrate basic operations and consider privileges | Public transfer demonstration, five local tests, documented allowance and supply model |
 
-The optional [multisig treasury](../deployment/BONUS.md) is implemented, tested,
+The optional [multisig treasury](../deployment/README.md#multisig-treasury-bonus) is implemented, tested,
 deployed, and source-verified. Its public funding and two-approval transfer
 demonstration is still pending. A video is not required.
 

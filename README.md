@@ -68,7 +68,7 @@ deployment. See the deployment guide before using `node deployment/deploy.ts sep
 
 Deployment wrappers use TypeScript with Node.js 24 for readable path handling and command execution.
 Contracts remain Solidity and Ignition deployment modules remain TypeScript.
-For the multisig treasury, see [the bonus guide](deployment/BONUS.md).
+For the multisig treasury, see [the bonus guide](deployment/README.md#multisig-treasury-bonus).
 
 The bonus treasury is deployed and source-verified on Ethereum Sepolia at
 `0x5590a47D2Dd0B46Fbd7318E29dF62499ba6a29E6`. It requires two of three
