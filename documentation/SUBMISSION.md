@@ -6,13 +6,15 @@
 | Blockchain-compatible token standard | ERC-20 inherited from OpenZeppelin on Ethereum Sepolia |
 | Root README explains choices | [README](../README.md) |
 | Readable, commented token source under code/ | [Token42.sol](../code/contracts/Token42.sol) |
-| Separate deployment materials | [deployment/](../deployment/README.md), including a runnable [deployment script](../deployment/deploy.sh), instructions, and verification input |
+| Separate deployment materials | [deployment/](../deployment/README.md), including a runnable [deployment script](../deployment/deploy.ts), instructions, and verification input |
 | Public blockchain deployment, ticker, explorer publication | T42 at the Sepolia address linked in the root README; source verified |
 | Contract address and network in Git repository contents | Root README and deployment guide |
 | Root documentation/ explains operation and usage | [Usage and security guide](README.md) |
 | Demonstrate basic operations and consider privileges | Public transfer demonstration, five local tests, documented allowance and supply model |
 
-Multisig is optional bonus work and is not implemented. A video is not required.
+The optional [multisig treasury](../deployment/BONUS.md) is implemented, tested,
+deployed, and source-verified. Its public funding and two-approval transfer
+demonstration is still pending. A video is not required.
 
 ## Final local check
 

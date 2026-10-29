@@ -1,0 +1,8 @@
+{
+  "Token42MultisigModule": {
+    "tokenAddress": "0xB1fb8F1Fba1F82014Ba83cc9e0dAc99B6b7ead72",
+    "signer1": "0xA0f63a7c61671E05b6e1E642823A4f088E5C771B",
+    "signer2": "0x783620E9032Dd07ef8f36016087Cb2531AFc2dfF",
+    "signer3": "0xbb6049aB3064aaa068fbd76424CC5B964fC071E1"
+  }
+}

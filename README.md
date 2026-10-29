@@ -47,8 +47,9 @@ npx hardhat test
 tests, and `npm run typecheck` builds the contracts and checks TypeScript.
 Local tests require no private key or testnet funds.
 
-The five Solidity tests cover initial supply, transfers, insufficient balances,
-approved spending, and rejection of spending without approval.
+The five token tests cover initial supply, transfers, insufficient balances,
+approved spending, and rejection of spending without approval. Sixteen additional
+tests cover the multisig treasury.
 
 ## Repository layout
 
@@ -62,5 +63,14 @@ approved spending, and rejection of spending without approval.
 - [Token operation, security, and evaluation demonstration](documentation/README.md)
 - [Mandatory requirements and submission checklist](documentation/SUBMISSION.md)
 
-From the repository root, run `bash deployment/deploy.sh` for a temporary local
-deployment. See the deployment guide before using `bash deployment/deploy.sh sepolia`.
+From the repository root, run `node deployment/deploy.ts` for a temporary local
+deployment. See the deployment guide before using `node deployment/deploy.ts sepolia`.
+
+Deployment wrappers use TypeScript with Node.js 24 for readable path handling and command execution.
+Contracts remain Solidity and Ignition deployment modules remain TypeScript.
+For the multisig treasury, see [the bonus guide](deployment/BONUS.md).
+
+The bonus treasury is deployed and source-verified on Ethereum Sepolia at
+`0x5590a47D2Dd0B46Fbd7318E29dF62499ba6a29E6`. It requires two of three
+signers for outgoing treasury transfers. The public funding/approval/execution
+demonstration remains pending; ordinary wallet transfers remain standard ERC20.

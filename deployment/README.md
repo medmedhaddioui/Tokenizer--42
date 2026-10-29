@@ -28,10 +28,10 @@ npx hardhat test
 
 Run all remaining commands in this guide from `code/`.
 
-The runnable entry point is [deploy.sh](deploy.sh). From the repository root,
-use `bash deployment/deploy.sh` for a local deployment or
-`bash deployment/deploy.sh sepolia` for Sepolia. It locates the Hardhat project
-automatically and calls the module below. Bash is available in WSL/Linux/macOS.
+The runnable entry point is [deploy.ts](deploy.ts). From the repository root,
+use `node deployment/deploy.ts` for a local deployment or
+`node deployment/deploy.ts sepolia` for Sepolia. It locates the Hardhat project
+automatically and calls the module below. These wrappers require Node.js 24 and run in WSL/Linux/macOS. No additional runtime packages are needed.
 
 The deployment module is [Token42.ts](../code/ignition/modules/Token42.ts).
 It tells Hardhat Ignition to deploy `Token42` without constructor arguments.
@@ -40,7 +40,7 @@ It lives inside the Hardhat project so it can resolve the project's dependencies
 ## 2. Practice locally
 
 ```sh
-bash ../deployment/deploy.sh hardhatMainnet
+node ../deployment/deploy.ts hardhatMainnet
 ```
 
 Despite its name, `hardhatMainnet` is configured as a simulated network, not
@@ -95,7 +95,7 @@ To correct a saved value, repeat its `keystore set` command with `--force`.
 ## 5. Deploy to Sepolia
 
 ```sh
-bash ../deployment/deploy.sh sepolia
+node ../deployment/deploy.ts sepolia
 ```
 
 Unlock the keystore when prompted. Check that the confirmation names Sepolia
