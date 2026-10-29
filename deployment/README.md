@@ -16,14 +16,22 @@ publishes its source on an explorer and checks that it matches the deployed code
 
 You can inspect and use this deployment without deploying another token.
 
+## Guide map
+
+- Token: setup, local practice, Sepolia deployment and verification below.
+- [Multisig treasury](#multisig-treasury-bonus): signer configuration, deployment and demo.
+- [Usage and security](../documentation/README.md): code explanation and permission model.
+
 ## 1. Prepare the project
 
-Use Node.js 24 and npm. From the repository root:
+Use Node.js 24, npm, Git, and internet access for initial downloads. From the repository root:
 
 ```sh
 cd code
 npm ci
-npx hardhat test
+npm run typecheck
+node node_modules/typescript/bin/tsc --project ../deployment/tsconfig.json
+npm test
 ```
 
 Run all remaining commands in this guide from `code/`.

@@ -5,11 +5,11 @@ It demonstrates token creation, transfers, and spending approvals.
 
 ## Project choices
 
-- Solidity: used to write the smart contract.
-- Ethereum Sepolia: allows public testing without real money.
+- Solidity: directly targets the Ethereum Virtual Machine and supports the ERC-20 contract interface.
+- Ethereum Sepolia: provides a public Ethereum test network and explorer without requiring real-money transactions.
 - ERC-20: provides a standard interface for fungible tokens.
-- OpenZeppelin: provides the inherited ERC-20 implementation.
-- Hardhat 3: used to compile, test, and deploy the contract.
+- OpenZeppelin: reuses a standard ERC-20 implementation instead of rewriting balances, transfers, and allowance checks.
+- Hardhat 3: combines local Solidity tests, compilation, encrypted configuration, and reproducible Ignition deployment.
 - Fixed supply: all tokens are created at deployment, keeping the supply policy simple and preventing additional minting.
 
 ## Token details
@@ -35,12 +35,14 @@ A transfer of 10 T42 from the deploying account to a second account was successf
 
 ## Run locally
 
-Use Node.js 24 and npm. From the repository root:
+Use Node.js 24, npm, Git, and internet access for dependency/compiler downloads. From the repository root:
 
 ```sh
 cd code
 npm ci
-npx hardhat test
+npm run typecheck
+node node_modules/typescript/bin/tsc --project ../deployment/tsconfig.json
+npm test
 ```
 
 `npm test` also runs the
@@ -74,3 +76,16 @@ The bonus treasury is deployed and source-verified on Ethereum Sepolia at
 `0x5590a47D2Dd0B46Fbd7318E29dF62499ba6a29E6`. It requires two of three
 signers for outgoing treasury transfers. The public funding/approval/execution
 demonstration remains pending; ordinary wallet transfers remain standard ERC20.
+
+## Evaluation status
+
+| Area | Evidence and remaining work |
+| --- | --- |
+| Mandatory token | ERC-20, fixed supply, public verified Sepolia deployment and successful transfer demonstration |
+| Local validation | 5 token tests and 16 treasury tests; Hardhat and deployment TypeScript checks |
+| Bonus | Treasury deployed and verified; token, signers and threshold checked; public funding and two-approval execution demonstration still pending |
+| Oral evaluation | Student must explain the code, choices and privileges and demonstrate deployment/token actions live |
+
+The bonus is evaluated only if the mandatory requirements are fully satisfied.
+The treasury protects its own T42 holdings; it does not change ordinary holders'
+ERC-20 transfers. These results do not guarantee an evaluation grade.

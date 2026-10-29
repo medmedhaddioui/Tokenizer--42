@@ -126,15 +126,16 @@ From the repository root:
 ```sh
 cd code
 npm ci
-npm test
 npm run typecheck
+node node_modules/typescript/bin/tsc --project ../deployment/tsconfig.json
+npm test
 ```
 
 Install/select Node.js 24 using your preferred method before running these commands. Local tests
 use simulated accounts and need neither wallet secrets nor Sepolia funds.
 Each Solidity test receives a fresh contract through `setUp()`.
 
-The five tests cover initial supply and deployer balance, successful transfer,
+The five token tests cover initial supply and deployer balance, successful transfer,
 rejection of an excessive transfer, approval followed by delegated spending,
 and rejection of delegated spending without approval. `vm.prank` changes the
 sender for a test call; `vm.expectRevert` asserts that a call fails as expected.
@@ -144,4 +145,42 @@ sender for a test call; `vm.expectRevert` asserts that a call fails as expected.
 Explain the token's purpose and choices; show the short source and inherited
 ERC-20 functions; run the tests; open the verified public contract; read supply
 and balances; explain or repeat a transfer; and describe ownership, allowances,
-units, and key handling. Multisig is the optional bonus and is not implemented.
+units, and key handling. Use the deployment wrapper to demonstrate deployment
+with the evaluator; compilation alone is not deployment. See the
+[deployment guide](../deployment/README.md) for local practice and public Sepolia setup.
+
+## Multisig bonus: operation and privileges
+
+The separate [Token42Multisig contract](../code/contracts/Token42Multisig.sol)
+is a treasury holding T42, with three fixed authorized signers and a threshold
+of two. It is deployed and verified on Sepolia at
+`0x5590a47D2Dd0B46Fbd7318E29dF62499ba6a29E6`.
+The deployer has no extra power. Only holdings of this treasury are protected by
+multisig; normal token holders retain standard ERC-20 transfers.
+
+| Function | Who can call it and what happens |
+| --- | --- |
+| `proposeTransfer(recipient, amount)` | A signer records a proposal; no tokens move and no approval is implicit |
+| `approveTransaction(id)` | A signer adds one approval, at most once per proposal unless revoked |
+| `revokeApproval(id)` | An approving signer removes their approval before execution |
+| `executeTransaction(id)` | A signer executes once at least two distinct approvals exist |
+| `transactions(id)`, `hasApproved(id, signer)` | Anyone can read proposal state and approvals |
+
+Each approval transaction is signed with the signer's account key. The threshold
+counts different authorized addresses, not repeated transactions from one address.
+Execution marks the proposal as executed before transferring tokens; a failed
+transfer reverts that change. Executed proposals cannot be replayed. Token address
+and signers cannot be changed, and there is no withdrawal bypass. Losing access
+to two signers locks the funds. Other assets cannot be recovered from this treasury.
+Using three accounts controlled by one person is a demonstration, not independent
+custody. Approvals have no expiry; revoke unwanted approvals before execution.
+
+Sixteen local treasury tests cover setup, input validation, authorization,
+proposal IDs, approval isolation, duplicates, revocation, threshold enforcement,
+execution, replay protection and insufficient-balance retry. These tests supplement
+the five token tests; source verification is not a security audit.
+
+Follow the [multisig deployment and demonstration steps](../deployment/README.md#multisig-treasury-bonus).
+The public funding and two-approval execution demonstration is pending; record
+its transaction hash and resulting balances once performed, rather than treating
+local tests as evidence of a public transfer.

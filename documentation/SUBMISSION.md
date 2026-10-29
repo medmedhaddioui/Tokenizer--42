@@ -24,6 +24,7 @@ From the repository root, with Node.js 24 selected:
 cd code
 npm ci
 npm run typecheck
+node node_modules/typescript/bin/tsc --project ../deployment/tsconfig.json
 npm test
 ```
 
@@ -57,3 +58,16 @@ repository or an example address for your own submission destination.
 Finally, confirm the files are visible in the evaluation repository. Be ready
 to explain the source and demonstrate the token; written files do not replace
 the oral/code review.
+
+## Live evaluation checklist
+
+- Explain platform/language choices, ERC-20 inheritance, constructor and decimal units.
+- Explain token ownership versus administrator roles; this token has no administrator.
+- Reproduce installation and tests, then demonstrate deployment with the evaluator.
+- Show the recorded public contract, name, ticker, supply, balances and a transfer.
+- Explain approve/allowance/transferFrom and show successful and rejected local cases.
+- For bonus, demonstrate insufficient approvals, two distinct approvals and one-time execution.
+- Confirm the school's submission repository is the one receiving the final commit.
+
+The public multisig transfer demonstration remains outstanding. A deployed and
+verified treasury alone does not establish that this live demonstration was done.
