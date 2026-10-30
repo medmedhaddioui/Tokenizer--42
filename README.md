@@ -41,7 +41,6 @@ Use Node.js 24, npm, Git, and internet access for dependency/compiler downloads.
 cd code
 npm ci
 npm run typecheck
-node node_modules/typescript/bin/tsc --project ../deployment/tsconfig.json
 npm test
 ```
 
@@ -65,10 +64,10 @@ tests cover the multisig treasury.
 - [Token operation, security, and evaluation demonstration](documentation/README.md)
 - [Mandatory requirements and submission checklist](documentation/SUBMISSION.md)
 
-From the repository root, run `node deployment/deploy.ts` for a temporary local
-deployment. See the deployment guide before using `node deployment/deploy.ts sepolia`.
+From the repository root, run `bash deployment/deploy.sh` for a temporary local
+deployment. See the deployment guide before using `bash deployment/deploy.sh sepolia`.
 
-Deployment wrappers use TypeScript with Node.js 24 for readable path handling and command execution.
+Deployment wrappers use Bash for path handling and command execution; Hardhat requires Node.js 24.
 Contracts remain Solidity and Ignition deployment modules remain TypeScript.
 For the multisig treasury, see [the bonus guide](deployment/README.md#multisig-treasury-bonus).
 
@@ -82,7 +81,7 @@ demonstration remains pending; ordinary wallet transfers remain standard ERC20.
 | Area | Evidence and remaining work |
 | --- | --- |
 | Mandatory token | ERC-20, fixed supply, public verified Sepolia deployment and successful transfer demonstration |
-| Local validation | 5 token tests and 16 treasury tests; Hardhat and deployment TypeScript checks |
+| Local validation | 5 token tests and 16 treasury tests; Hardhat TypeScript checks and deployment Bash syntax checks |
 | Bonus | Treasury deployed and verified; token, signers and threshold checked; public funding and two-approval execution demonstration still pending |
 | Oral evaluation | Student must explain the code, choices and privileges and demonstrate deployment/token actions live |
 

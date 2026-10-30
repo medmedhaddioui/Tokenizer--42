@@ -6,7 +6,7 @@
 | Blockchain-compatible token standard | ERC-20 inherited from OpenZeppelin on Ethereum Sepolia |
 | Root README explains choices | [README](../README.md) |
 | Readable, commented token source under code/ | [Token42.sol](../code/contracts/Token42.sol) |
-| Separate deployment materials | [deployment/](../deployment/README.md), including a runnable [deployment script](../deployment/deploy.ts), instructions, and verification input |
+| Separate deployment materials | [deployment/](../deployment/README.md), including a runnable [deployment script](../deployment/deploy.sh), instructions, and verification input |
 | Public blockchain deployment, ticker, explorer publication | T42 at the Sepolia address linked in the root README; source verified |
 | Contract address and network in Git repository contents | Root README and deployment guide |
 | Root documentation/ explains operation and usage | [Usage and security guide](README.md) |
@@ -24,7 +24,6 @@ From the repository root, with Node.js 24 selected:
 cd code
 npm ci
 npm run typecheck
-node node_modules/typescript/bin/tsc --project ../deployment/tsconfig.json
 npm test
 ```
 

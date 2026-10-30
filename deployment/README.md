@@ -30,16 +30,15 @@ Use Node.js 24, npm, Git, and internet access for initial downloads. From the re
 cd code
 npm ci
 npm run typecheck
-node node_modules/typescript/bin/tsc --project ../deployment/tsconfig.json
 npm test
 ```
 
 Run all remaining commands in this guide from `code/`.
 
-The runnable entry point is [deploy.ts](deploy.ts). From the repository root,
-use `node deployment/deploy.ts` for a local deployment or
-`node deployment/deploy.ts sepolia` for Sepolia. It locates the Hardhat project
-automatically and calls the module below. These wrappers require Node.js 24 and run in WSL/Linux/macOS. No additional runtime packages are needed.
+The runnable entry point is [deploy.sh](deploy.sh). From the repository root,
+use `bash deployment/deploy.sh` for a local deployment or
+`bash deployment/deploy.sh sepolia` for Sepolia. It locates the Hardhat project
+automatically and calls the module below. These wrappers require Bash and Node.js 24 and run in WSL/Linux/macOS. No additional runtime packages are needed.
 
 The deployment module is [Token42.ts](../code/ignition/modules/Token42.ts).
 It tells Hardhat Ignition to deploy `Token42` without constructor arguments.
@@ -48,7 +47,7 @@ It lives inside the Hardhat project so it can resolve the project's dependencies
 ## 2. Practice locally
 
 ```sh
-node ../deployment/deploy.ts hardhatMainnet
+bash ../deployment/deploy.sh hardhatMainnet
 ```
 
 Despite its name, `hardhatMainnet` is configured as a simulated network, not
@@ -103,7 +102,7 @@ To correct a saved value, repeat its `keystore set` command with `--force`.
 ## 5. Deploy to Sepolia
 
 ```sh
-node ../deployment/deploy.ts sepolia
+bash ../deployment/deploy.sh sepolia
 ```
 
 Unlock the keystore when prompted. Check that the confirmation names Sepolia
@@ -207,7 +206,7 @@ needs SepoliaETH.
 From code/:
 
 ```sh
-node ../deployment/deploy_multisig.ts
+bash ../deployment/deploy_multisig.sh
 ```
 
 Check the confirmation names Sepolia. The wrapper runs the Ignition module with
@@ -255,7 +254,6 @@ From code/:
 
 ```sh
 npm run typecheck
-node node_modules/typescript/bin/tsc --project ../deployment/tsconfig.json
 npm test
 ```
 

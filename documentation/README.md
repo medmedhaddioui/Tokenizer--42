@@ -127,7 +127,6 @@ From the repository root:
 cd code
 npm ci
 npm run typecheck
-node node_modules/typescript/bin/tsc --project ../deployment/tsconfig.json
 npm test
 ```
 
